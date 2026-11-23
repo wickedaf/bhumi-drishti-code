@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "leaflet/dist/leaflet.css";
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Hind Siliguri", "Manrope", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  /* Astryx Agriculture Palette */
+  --color-primary-50: #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-500: #1b4d3e;
+  --color-primary-600: #166534;
+  --color-primary-700: #14532d;
+  
+  --color-earth-500: #a97843;
+  --color-gold-500: #d4a373;
+  --color-danger-500: #c84b31;
+  --color-monsoon-500: #3a86c8;
+
+  --color-surface-canvas: #f4f6f2;
+  --color-surface-card: #ffffff;
+  --color-surface-muted: #e9ece6;
+  --color-surface-border: #d0d7cd;
+  --color-surface-border-strong: #9da999;
+
+  --color-text-primary: #1c2826;
+  --color-text-secondary: #43544f;
+  --color-text-muted: #6f807a;
+  --color-text-inverted: #ffffff;
+
+  --shadow-tactile: 0 4px 0 0 #0f3026;
+  --shadow-tactile-warn: 0 4px 0 0 #852d1b;
+  --shadow-tactile-gold: 0 4px 0 0 #8c5d2c;
+  --shadow-card: 0 2px 8px -2px rgba(28, 40, 38, 0.08), 0 1px 3px 0 rgba(28, 40, 38, 0.04);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-surface-canvas);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Tactile Click Buttons for Farmers */
+.btn-tactile-primary {
+  background-color: var(--color-primary-500);
+  color: white;
+  box-shadow: var(--shadow-tactile);
+  border: 1px solid var(--color-primary-700);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-tactile-primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #0f3026;
+}
+
+.btn-tactile-warn {
+  background-color: var(--color-danger-500);
+  color: white;
+  box-shadow: var(--shadow-tactile-warn);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-tactile-warn:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #852d1b;
+}
+
+.btn-tactile-earth {
+  background-color: var(--color-earth-500);
+  color: white;
+  box-shadow: var(--shadow-tactile-gold);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.btn-tactile-earth:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 0 #8c5d2c;
+}
+
+/* Audio Waveform animation */
+@keyframes pulse-wave {
+  0%, 100% { height: 8px; }
+  50% { height: 32px; }
+}
+
+.wave-bar {
+  display: inline-block;
+  width: 4px;
+  background-color: #4ade80;
+  border-radius: 9999px;
+  animation: pulse-wave 1s infinite ease-in-out;
+}
+.wave-bar:nth-child(2) { animation-delay: 0.15s; }
+.wave-bar:nth-child(3) { animation-delay: 0.3s; }
+.wave-bar:nth-child(4) { animation-delay: 0.45s; }
+.wave-bar:nth-child(5) { animation-delay: 0.6s; }
+
+/* Leaflet Map overrides */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+  z-index: 10;
+}
